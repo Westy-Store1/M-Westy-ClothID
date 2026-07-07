@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>M-Westy_ClothID - Capture Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <div id="app">
+        <!-- Main Game Panel Overlay -->
+        <div class="game-overlay-panel">
+            
+            <!-- Panel Header -->
+            <div class="panel-header">
+                <div class="header-main">
+                    <div class="brand-badge">SYSTEM</div>
+                    <div class="title-section">
+                        <h1>M-WESTY_CLOTHID</h1>
+                        <span class="subtitle">CAPTURA DE COMPONENTES DE VESTUÁRIO</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-gender-toggle" onclick="toggleGender()" title="Alternar Gênero do Personagem">
+                        <span class="gender-icon">🚻</span>
+                        <span class="gender-label">Alternar Gênero</span>
+                    </button>
+                    <button class="close-action-btn" onclick="closeApp()" title="Fechar">✕</button>
+                </div>
+            </div>
+
+            <!-- Panel Metadata / Status -->
+            <div class="panel-status-bar">
+                <div class="status-group">
+                    <span class="status-label">MODELO ATIVO</span>
+                    <span class="status-value" id="modelName">-</span>
+                </div>
+                <div class="status-group">
+                    <span class="status-label">CATEGORIAS CARREGADAS</span>
+                    <span class="status-value">15/15</span>
+                </div>
+                <div class="status-group">
+                    <span class="status-label">STATUS</span>
+                    <span class="status-value highlight">SINTONIZADO</span>
+                </div>
+            </div>
+
+            <!-- Panel Content -->
+            <div class="panel-body">
+                <div class="clothing-grid-container">
+                    <div class="clothing-grid" id="clothingGrid">
+                        <!-- Will be populated dynamically via JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel Footer / Actions -->
+            <div class="panel-footer">
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="refreshData()">
+                        <span class="btn-icon">🔄</span>
+                        <span class="btn-text">Sincronizar</span>
+                    </button>
+                    <button class="btn btn-success" onclick="copyFormatted(event)">
+                        <span class="btn-icon">📋</span>
+                        <span class="btn-text">Copiar Formato Lua</span>
+                    </button>
+                    <button class="btn btn-info" onclick="copyJSON(event)">
+                        <span class="btn-icon">📄</span>
+                        <span class="btn-text">Copiar JSON</span>
+                    </button>
+                </div>
+                <div class="creator-credits" id="creditsContainer"></div>
+            </div>
+
+        </div>
+
+        <!-- Camera Control Bar floating below the main panel -->
+        <div class="camera-control-sidebar">
+            <div class="sidebar-title">CONTROLE DE VISTA</div>
+            
+            <div class="camera-section">
+                <span class="section-label">ROTAÇÃO PED</span>
+                <div class="camera-row">
+                    <button class="cam-btn" onclick="rotatePlayer('left')" title="Girar para Esquerda">◀</button>
+                    <button class="cam-btn" onclick="rotatePlayer('right')" title="Girar para Direita">▶</button>
+                </div>
+            </div>
+
+            <div class="camera-section">
+                <span class="section-label">ZOOM CAM</span>
+                <div class="camera-row">
+                    <button class="cam-btn" onclick="zoomCam('in')" title="Aproximar">+</button>
+                    <button class="cam-btn" onclick="zoomCam('out')" title="Afastar">-</button>
+                </div>
+            </div>
+
+            <div class="camera-section focus-section">
+                <span class="section-label">FOCO DA CÂMERA</span>
+                <div class="camera-row">
+                    <button class="cam-focus-btn" data-focus="head" onclick="changeFocus('head')">Cabeça</button>
+                    <button class="cam-focus-btn active" data-focus="torso" onclick="changeFocus('torso')">Tronco</button>
+                    <button class="cam-focus-btn" data-focus="pants" onclick="changeFocus('pants')">Pernas</button>
+                    <button class="cam-focus-btn" data-focus="shoes" onclick="changeFocus('shoes')">Pés</button>
+                    <button class="cam-focus-btn" data-focus="all" onclick="changeFocus('all')">Corpo Inteiro</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output Preview Modal -->
+        <div class="output-modal" id="outputModal">
+            <div class="modal-panel">
+                <div class="modal-header">
+                    <span class="modal-title" id="modalTitle">PRESET GERADO</span>
+                    <button class="modal-close-btn" onclick="closeModal()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <pre><code id="modalText"></code></pre>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="closeModal()">Fechar</button>
+                    <button class="btn btn-success" id="modalCopyBtn" onclick="copyModalText()">Copiar Novamente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
