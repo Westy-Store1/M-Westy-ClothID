@@ -1,14 +1,14 @@
-# M-Westy ClothID
+# M-Westy ClothID (standalone)
 
 Ferramenta para FiveM desenvolvida para capturar os IDs de roupas e acessórios do personagem em tempo real. Ideal para desenvolvedores de servidores, designers de roupas e administradores configurarem presets ou scripts de customização visual.
 
+<img width="1672" height="941" alt="a" src="https://github.com/user-attachments/assets/2a77ee70-70eb-4f56-877a-afbd023ddccc" />
 
 ## 🚀 Recursos
 
 * **Câmera integrada:** Foco inteligente em partes específicas do corpo (Cabeça, Torso, Pernas, Sapatos ou Corpo Inteiro), com controle manual de rotação e zoom.
 * **Cópia rápida:** Exportação instantânea dos IDs das roupas em formato de tabela Lua ou JSON diretamente para a área de transferência.
 * **Alternar Gênero:** Botão para alternar entre os modelos masculino e feminino (`mp_m_freemode_01` e `mp_f_freemode_01`) diretamente no painel.
-* **Compatibilidade:** Integração nativa com o menu radial/dinâmico (`dynamic`).
 
 ## 🛠️ Comandos
 
@@ -23,7 +23,7 @@ No chat do jogo ou console, utilize qualquer um dos comandos abaixo para abrir a
 2. Certifique-se de manter o arquivo `README-NÃO-EXCLUA.md` e `server-side/credits.lua` intactos (o script possui verificação automática de assinatura desses arquivos).
 3. Adicione `ensure M-Westy_ClothID` no arquivo `server.cfg`.
 
-## 📦 Exemplo de Dados Exportados (Lua)
+## Exemplo de Dados Exportados (Lua)
 
 ```lua
 ["mp_m_freemode_01"] = {
@@ -44,3 +44,8 @@ No chat do jogo ou console, utilize qualquer um dos comandos abaixo para abrir a
     ["decals"] = { item = 0, texture = 0 }
 }
 ```
+
+## PREVIEW:
+
+<img width="710" height="627" alt="b" src="https://github.com/user-attachments/assets/8e777ff5-14e5-45c6-a302-fd8a892f9ee3" />
+
